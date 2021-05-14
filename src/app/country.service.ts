@@ -20,9 +20,9 @@ export class CountryService {
 
 function cleanUpCountries(rawCountries: any[]): Country[] {
   return rawCountries.map((rawCountry) => {
-    const { name, cca3: code } = rawCountry
+    const { name, cca3: code, flag } = rawCountry
     const {common: commonName, native: nativeName} = name
 
-    return { commonName, nativeName, code}
+    return { commonName, nativeName, code, flag}
   })
 }

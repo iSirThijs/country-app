@@ -1,4 +1,5 @@
 <article *ngIf='country'>
 	<h1>{{country.commonName}}</h1>
 	<p>{{country.code}}</p>
+	<img [src]='country.flag' alt="The flag of {{country.commonName}}">
 </article>
