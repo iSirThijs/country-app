@@ -1,6 +1,11 @@
 export interface Country {
-    commonName: String;
-    nativeName: String;
-    code: String;
-    flag: String;
+    commonName: string;
+    nativeName: string;
+    code: string;
+    flag: string;
+    region: string;
+    subregion: string;
+    currencies: string[];
+    languages: string[];
+    nativeLanguage: string;
 }

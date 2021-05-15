@@ -16,10 +16,11 @@ export class CountryListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCountries()
+    console.log(this.countries)
   }
 
   getCountries(): void {
-    this.countryService.getCountries().then((countries) => this.countries = countries)
+    this.countryService.getCountries().subscribe((countries) =>  this.countries = countries)
   }
 
 }
