@@ -1,0 +1,16 @@
+<article *ngIf='country'>
+	<header>
+		<h1>{{country.commonName}}</h1>
+		<p>{{country.nativeName}}</p>
+	</header>
+	<section>
+		<ul>
+			<li><app-labels [labelName]='country.region' [labelType]='"region"'></app-labels></li>
+			<li><app-labels [labelName]='country.subregion' [labelType]='"subregion"'></app-labels></li>
+			<li *ngFor='let currency of country.currencies'>
+				<app-labels [labelName]='currency' [labelType]='"currency"'></app-labels>
+			</li>
+			<li><app-labels [labelName]='country.nativeLanguage' [labelType]='"language"'></app-labels></li>
+		</ul>
+	</section>
+</article>

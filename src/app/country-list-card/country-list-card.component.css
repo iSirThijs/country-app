@@ -1,0 +1,43 @@
+article {
+	background-color: grey;
+	padding: 1em;
+	max-width: 100%;
+	color: white;
+	border-radius: 10px;
+	border: 1px solid grey;
+	box-shadow: 2px 5px 6px 2px rgba(0,0,0,0.15);
+}
+
+article:hover {
+	border: solid 1px red;
+}
+
+header {
+	min-height: 5em;
+}
+h1 {
+	margin: 0;
+	font-size: 20px;
+	max-height: 2em;
+	line-height: 1em;
+}
+
+header p {
+	margin: 0;
+	padding: 0;	
+	height: 2em;
+	line-height: 1em;
+	font-style: italic;
+}
+
+section ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	height: 5em;
+	line-height: 1em;
+	align-items: flex-start;
+	gap: 5px;
+}

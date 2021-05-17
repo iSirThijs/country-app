@@ -1,0 +1,25 @@
+p {
+	background-color: darkgrey;
+	padding: .3em .5em;
+	font-size: 14px;
+	border-radius: 10px;
+	margin: 0;
+	font-style: italic;
+	text-align: center;
+}
+
+.currency::before {
+	content: '💰';
+	margin-right: 2px;
+}
+
+.subregion::before,
+.region::before{
+	content: '🌍';
+	margin-right: 2px;
+}
+
+.language::before{
+	content: '🗣';
+	margin-right: 2px;
+}
