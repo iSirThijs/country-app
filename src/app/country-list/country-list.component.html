@@ -1,3 +1,4 @@
+<a [routerLink]="['/list']" [queryParams]="{ region: 'Europe'}">querrytest</a>
 <ul>
 	<li *ngFor='let country of countries'>
 		<app-country-list-card [country]='country'></app-country-list-card>

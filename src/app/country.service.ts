@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subscriber } from 'rxjs';
+import { ParamMap } from '@angular/router';
+import { Observable,  } from 'rxjs';
+import { tap, map, withLatestFrom, filter, concatMap } from 'rxjs/operators'
 import { Country } from './country'
 import * as countryAPI from './country-api'
 
@@ -8,49 +10,21 @@ import * as countryAPI from './country-api'
   providedIn: 'root'
 })
 export class CountryService {
-  countries: Observable<Country[]> = new Observable((observer) => {
-    if(this.allCountries.length > 0) {
-      observer.next(this.allCountries) 
-    } else {
-      countryAPI.getAllCountries()
-        .then(cleanUpCountries)
-        .then((countries) => this.allCountries = countries)
-        .then(() => observer.next(this.allCountries))
-    }
-  })
-
-  private allCountries: Country[] = [];
+ private allCountries: Country[] = [];
+ private queryMap: ParamMap | null = null 
 
   constructor() {
   }
 
-  getCountries(): Observable<Country[]> { 
-    return this.countries
+  getCountries(queryParamMap: Observable<ParamMap>): Observable<Country[]> {
+    return queryParamMap
+      .pipe(concatMap((queryParamMap) => {
+        return countryAPI
+          .getAllCountries().pipe(map((countries) => countries.filter((country) => country.region === queryParamMap.get('region'))))}))
   }
-
-  getCountry(code: string): any {
-
-  }
-
 }
 
 
-function cleanUpCountries(rawCountries: any[]): Country[] {
-  return rawCountries.map((rawCountry) => {
-    const { name, cca3: code, flag, region, subregion, currency: currencies, languages, nativeLanguage } = rawCountry
-    const {common: commonName, native} = name
-    const {common: nativeName} = native
+// countries.filter((country: Country) => queryParamMap.get('region') === country.region)
 
-    return { 
-      commonName, 
-      nativeName, 
-      code, 
-      flag, 
-      region, 
-      subregion, 
-      currencies, 
-      languages: Object.values(languages),
-      nativeLanguage: languages[nativeLanguage]  
-    }
-  })
-}
+
