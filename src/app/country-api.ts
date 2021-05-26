@@ -1,4 +1,3 @@
-import { Observable, Subscriber } from "rxjs"
 import { Country } from "./country"
 
 const baseURL = 'https://country-api.kubernetes.pwstaging.tech/api/v1'
@@ -20,13 +19,9 @@ function fetcher(url: RequestInfo, init?: RequestInit): any {
  * Get a list of all the countries and their in the API
  * @returns an object containing all the countries with their info
  */
-export function getAllCountries(): Observable<Country[]> {
-    return new Observable((observer) => {
+export function getAllCountries(): Promise<Country[]> {
         return fetcher(`${baseURL}/countries`)
              .then((rawCountries: any[]) :Country[] => rawCountries.map(transformCountry))
-             .then((countries: Country[]) => observer.next(countries))
-             .then(() => observer.complete())
-     }) 
 }
 
 function transformCountry(rawCountry: any) :Country {

@@ -21,13 +21,7 @@ export class SearchComponent implements OnInit {
       .pipe(
         distinctUntilChanged(),
         debounceTime(400)
-      ).subscribe((value) => {
-        console.log(value, typeof value)
-        this.router.navigate(['/list'], { queryParams: { q: value }})
-    })
-
-    
-    
+      ).subscribe((value) => this.router.navigate(['/list'], { queryParams: { q: value }, queryParamsHandling: 'merge'}))
   }
 
   updateSearch(queryParamMap: Observable<ParamMap>) :void {
