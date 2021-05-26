@@ -1,5 +1,5 @@
 <app-search></app-search>
-<a [routerLink]="['/list']" [queryParams]="{ q: 'Albania', region:'Europe'}">querrytest</a>
+<app-filters></app-filters>
 <ul>
 	<li *ngFor='let country of countries'>
 		<app-country-list-card [country]='country'></app-country-list-card>

@@ -3,7 +3,7 @@ import { ParamMap } from '@angular/router';
 import { Observable,  } from 'rxjs';
 import { tap, map, concatMap, count } from 'rxjs/operators'
 import { Country } from './country'
-import {getAllCountries} from './country-api'
+import {getAllCountries, getAllCurrencies, getAllRegions, getAllSubRegions} from './country-api'
 @Injectable({
   providedIn: 'root'
 })
@@ -28,8 +28,26 @@ export class CountryService {
   }
 
   getCountries(queryParamMap: Observable<ParamMap>): Observable<Country[]> {
-    return queryParamMap
-      .pipe(concatMap((queryParamMap: ParamMap) => this.fetchCountries().pipe(map((countries: Country[]) => filterCountries(queryParamMap, countries)))))
+    return queryParamMap.pipe(concatMap((queryParamMap: ParamMap) => this.fetchCountries().pipe(map((countries: Country[]) => filterCountries(queryParamMap, countries)))))
+  }
+
+  getRegions(): Promise<string[]> {
+    return getAllRegions()
+  }
+
+  getSubregions(): Promise<string[]> {
+    return getAllSubRegions()
+  }
+
+  getCurrencies(): Promise<[key: string, value: number][]> {
+    return getAllCountries()
+      .then((countries: Country[]) => {
+        return countries.reduce((sum: {[key: string]: number}, country: Country) => {
+          country.currencies.forEach((currency) => sum[currency] ? sum[currency]++ : sum[currency] = 1)
+          return sum
+        },{})
+      })
+      .then((currencies) => Object.entries(currencies).sort(([keyA, valueA],[keyB, valueB]) => valueB - valueA))
   }
 }
 
