@@ -8,9 +8,7 @@ import {getAllCountries} from './country-api'
   providedIn: 'root'
 })
 export class CountryService {
- private allCountries: Country[] = [];
- private queryMap: ParamMap | null = null 
-
+ 
   constructor() {
   }
 
@@ -22,12 +20,11 @@ export class CountryService {
 
 
 function filterCountries(queryParamMap: ParamMap, countries: Country[]) {
-  if(queryParamMap.keys.length === 0) return countries // there are no filters so country can be returned without
+  if(queryParamMap.keys.length === 0) return countries // there are no filters active so country can be returned without
+  
   const regionFilter = queryParamMap.has('region') ? countries.filter((country: Country) => queryParamMap.getAll('region').includes(country.region)) : countries
   const subregionFilter = queryParamMap.has('subregion') ? regionFilter.filter((country: Country) => queryParamMap.getAll('subregion').includes(country.subregion)) : regionFilter
+  const search = queryParamMap.has('q') ? subregionFilter.filter((country: Country) => queryParamMap.get('q') === country.commonName) : subregionFilter
 
-  return subregionFilter
+  return search
 }
-
-
-
