@@ -26,11 +26,11 @@ export function getAllCountries(): Promise<Country[]> {
 }
 
 export function getAllRegions(): Promise<string[]> {
-    return fetcher(`${baseURL}/regions`).then((regions: string[]) => regions.filter((region: string) => region.length > 0))
+    return fetcher(`${baseURL}/regions`).then((regions: string[]) => regions.map((region: string) => region === '' ? 'Unknown region' : region))
 }
 
 export function getAllSubRegions(): Promise<string[]> {
-    return fetcher(`${baseURL}/subregions`).then((subregions: string[]) => subregions.filter((subregion: string) => subregion.length > 0))
+    return fetcher(`${baseURL}/subregions`).then((subregions: string[]) => subregions.map((subregion: string) => subregion === '' ? 'Unknown subregion' : subregion))
 }
 
 export function getAllCurrencies(): Promise<string[]> {
@@ -47,8 +47,8 @@ function transformCountry(rawCountry: any) :Country {
         nativeName, 
         code, 
         flag, 
-        region: region === '' ? 'Unknown' : region, 
-        subregion: subregion === '' ? 'Unknown' : subregion, 
+        region: region === '' ? 'Unknown region' : region, 
+        subregion: subregion === '' ? 'Unknown subregion' : subregion, 
         currencies, 
         languages: Object.values(languages),
         nativeLanguage: languages[nativeLanguage]  
