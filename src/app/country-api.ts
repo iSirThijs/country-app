@@ -40,15 +40,15 @@ export function getAllCurrencies(): Promise<string[]> {
 function transformCountry(rawCountry: any) :Country {
     const { name, cca3: code, flag, region, subregion, currency: currencies, languages, nativeLanguage } = rawCountry
     const {common: commonName, native} = name
-    const {common: nativeName} = native
+    const {common: nativeName} = native    
 
     return { 
         commonName, 
         nativeName, 
         code, 
         flag, 
-        region, 
-        subregion, 
+        region: region === '' ? 'Unknown' : region, 
+        subregion: subregion === '' ? 'Unknown' : subregion, 
         currencies, 
         languages: Object.values(languages),
         nativeLanguage: languages[nativeLanguage]  
