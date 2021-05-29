@@ -1,4 +1,3 @@
-import { filter } from "rxjs/operators"
 import { Country } from "./country"
 
 const baseURL = 'https://country-api.kubernetes.pwstaging.tech/api/v1'
@@ -35,6 +34,10 @@ export function getAllSubRegions(): Promise<string[]> {
 
 export function getAllCurrencies(): Promise<string[]> {
     return fetcher(`${baseURL}/currencies`).then((currencies: string[]) => currencies.filter((currency: string) => currency.length > 0))
+}
+
+export function getCountry(countryCode: Country['code']): Promise<Country> {
+    return fetcher(`${baseURL}/country/${countryCode}`).then((transformCountry))
 }
 
 function transformCountry(rawCountry: any) :Country {

@@ -8,7 +8,9 @@
 		<h2>Countries</h2>
 		<ul>
 			<li *ngFor='let country of countries'>
-				<app-country-list-card [country]='country'></app-country-list-card>
+				<a [routerLink]="['/country', country.code]" >
+					<app-country-list-card [country]='country'></app-country-list-card>
+				</a>
 			</li>
 		</ul>
 	</section>

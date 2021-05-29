@@ -3,7 +3,7 @@ import { ParamMap } from '@angular/router';
 import { Observable,  } from 'rxjs';
 import { tap, map, concatMap, count } from 'rxjs/operators'
 import { Country } from './country'
-import {getAllCountries, getAllCurrencies, getAllRegions, getAllSubRegions} from './country-api'
+import {getAllCountries, getCountry, getAllCurrencies, getAllRegions, getAllSubRegions} from './country-api'
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +29,22 @@ export class CountryService {
 
   getCountries(queryParamMap: Observable<ParamMap>): Observable<Country[]> {
     return queryParamMap.pipe(concatMap((queryParamMap: ParamMap) => this.fetchCountries().pipe(map((countries: Country[]) => filterCountries(queryParamMap, countries)))))
+  }
+
+  getCountry(countryCode: Country["code"]): Observable<Country | null> {
+    return new Observable((observer) => {
+      if(this.allCountries.length === 0) {
+        getCountry(countryCode)
+          .then(country => observer.next(country))
+          .then(() => observer.complete())
+      } else {
+        let country = this.allCountries.find((country) => country.code === countryCode)
+        if(country) {
+          observer.next(country)
+          observer.complete()
+        }
+      }
+    })
   }
 
   getRegions(): Promise<string[]> {
