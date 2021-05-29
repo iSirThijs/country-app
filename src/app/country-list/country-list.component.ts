@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Unsubscribable } from 'rxjs';
 import { Country } from '../country'
 import { CountryService } from '../country.service'
 
@@ -20,8 +20,9 @@ export class CountryListComponent implements OnInit {
   ngOnInit(): void {
     this.getCountries(this.queryParamMap)
   }
-
+  
   getCountries(queryParamMap: Observable<ParamMap>): void {
     this.countryService.getCountries(queryParamMap).subscribe((countries) =>  this.countries = countries)
+   
   }
 }

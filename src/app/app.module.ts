@@ -9,6 +9,7 @@ import { LabelsComponent } from './labels/labels.component';
 import { FiltersComponent } from './filters/filters.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
+import { CountryPageComponent } from './country-page/country-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SearchComponent } from './search/search.component';
     CountryListCardComponent,
     LabelsComponent,
     FiltersComponent,
-    SearchComponent
+    SearchComponent,
+    CountryPageComponent
   ],
   imports: [
     BrowserModule,
