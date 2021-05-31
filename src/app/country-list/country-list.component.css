@@ -28,3 +28,7 @@ li {
 	min-width: 18rem;
 	max-width: 18rem;
 }
+
+li a {
+	text-decoration: none;
+}
