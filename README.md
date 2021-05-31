@@ -1,5 +1,5 @@
 # CountryApp
-![Screenshot from the CountryApp]('./')
+![Screenshot from the CountryApp]('../app-screenshot.png')
 
 An Angular app to show my frontend skills. It displays a list of countries and some information about them. You can filter and search, or view a detailed page of a country
 
