@@ -1,5 +1,6 @@
 # CountryApp
-![Screenshot from the CountryApp]('../app-screenshot.png')
+<img width="1821" alt="Schermafbeelding 2021-05-31 om 15 19 26" src="https://user-images.githubusercontent.com/23125314/120199816-ed8cbe80-c223-11eb-8cb0-bbfae8fca3a9.png">
+
 
 An Angular app to show my frontend skills. It displays a list of countries and some information about them. You can filter and search, or view a detailed page of a country
 
