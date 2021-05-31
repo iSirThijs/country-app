@@ -1,0 +1,21 @@
+<main>
+	<section>
+	<h1>Search</h1>
+		<app-search></app-search>
+	<h1>Filters</h1>
+		<app-filters></app-filters>
+	</section>
+	<section>
+		<h2>Countries</h2>
+		<ul>
+			<li *ngFor='let country of countries'>
+				<a [routerLink]="['/country', country.code]" >
+					<app-country-list-card [country]='country'></app-country-list-card>
+				</a>
+			</li>
+			<li *ngIf='countries.length === 0'>
+				<app-country-list-card [country]='undefined'></app-country-list-card>
+			</li>
+		</ul>
+	</section>
+</main>

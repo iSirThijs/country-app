@@ -1,0 +1,29 @@
+<form [formGroup]='form'>
+	<fieldset>
+		<legend>
+			<h2>🌍 Regions</h2>
+		</legend>
+		<label formArrayName="regions" *ngFor="let region of regionsFormArray.controls; let i = index">
+			<input type="checkbox" [formControlName]="i">
+			{{regions[i]}}
+		</label>
+	</fieldset>
+	<fieldset>
+		<legend>
+			<h2>🌍 Subregions</h2>
+		</legend>
+		<label formArrayName="subregions" *ngFor="let subregion of subregionsFormArray.controls; let i = index">
+			<input type="checkbox" [formControlName]="i">
+			{{subregions[i]}}
+		</label>
+	</fieldset>
+	<!-- <fieldset>
+		<legend>
+			<h2>💰 Currency</h2>
+		</legend>
+		<label formArrayName="currencies" *ngFor="let currency of currencyFormArray.controls; let i = index">
+			<input type="checkbox" [formControlName]="i">
+			{{currencies[i]}}
+		</label>
+	</fieldset> -->
+</form>

@@ -1,0 +1,11 @@
+label {
+	font-size: 0;
+}
+
+input {
+	width: 100%;
+	border: dotted 1px goldenrod;
+	border-radius: 10px;
+	padding: .5em;
+	font-size: 16px;
+}

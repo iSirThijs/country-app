@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+	box-sizing: border-box;
+	padding: 10px;
+	max-width: 90rem;
+	margin: 0 auto;
+	font-family: system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+h1, h2, h3 {
+	font-family: 'Nunito', system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+section > h1 {
+	font-weight: bolder;
+}
+
+* {
+	box-sizing: inherit;
+}

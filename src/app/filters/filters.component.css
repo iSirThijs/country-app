@@ -1,0 +1,12 @@
+fieldset {
+	display: flex;
+	flex-flow: column;
+	gap: .5em;
+	border-radius: 10px;
+	border: dotted 1px goldenrod
+}
+
+legend h2 {
+	margin: .5em auto;
+	font-size: 20px;
+}
