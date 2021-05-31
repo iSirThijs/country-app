@@ -43,6 +43,9 @@ To build the app for production use `npm run build`, the dist folder is the buil
 
 ## Design Rationale
 During this assignment I have made choices about the apps development and design. In this design rationale I explain the reasoning behind those choices.
+
+I have spent around 20-30 hours on this assignment
+
 ### Framework and tools
 Before starting this assignment I had no prior or just a tiny bit of framework experience. I consider myself good at JS which and understand how frameworks generally work. I have made one my self as an exercise for school, to figure this out. (You can view it here: [Game Explorer](https://github.com/iSirThijs/web-app-from-scratch-1920)). I tend to not favor frameworks and be framework agnostic. The tooling/framework should fit the use case, not the other way around.
 
