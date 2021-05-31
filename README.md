@@ -4,7 +4,23 @@
 An Angular app to show my frontend skills. It displays a list of countries and some information about them. You can filter and search, or view a detailed page of a country
 
 ## Contents
-
+- [CountryApp](#countryapp)
+	- [Contents](#contents)
+	- [⚙️ Installation & Usage](#️-installation--usage)
+		- [Prerequisites](#prerequisites)
+		- [Installation](#installation)
+		- [Usage](#usage)
+			- [🔬 For development](#-for-development)
+			- [🔨 For production](#-for-production)
+	- [Design Rationale](#design-rationale)
+		- [Framework and tools](#framework-and-tools)
+		- [Code and API](#code-and-api)
+		- [Filters](#filters)
+		- [App design and UX](#app-design-and-ux)
+			- [Country cards and labels](#country-cards-and-labels)
+			- [Filters](#filters-1)
+	- [What I have learned](#what-i-have-learned)
+	- [What I haven't done / Ideas for new features](#what-i-havent-done--ideas-for-new-features)
 
 ## ⚙️ Installation & Usage
 
@@ -40,6 +56,13 @@ I chose to transform the API results to a typing. This way I could have full con
 
 The filters also use this service instead of using the URL for filtering directly from the API. The data is already there, so why not use it. 
 
+### Filters
+The filters work by observing the query parameters in the app. When they change due to navigation the app filters the countries based on the filters. This way, whenever you search or change a filter, the link would change allowing you to go back using the history of the browser (which is a good UX practice)
+
+While this works for some basic tasks with query parameters, these filters are actually to complex. The query parameters become to long and with the currency filter on there are to many calls to `replace history` which browsers don't like. This is something I observed to late in the building of this app
+
+Granted I have time, I would refactor this using observables from the form directly into the country service that supplies the list of countries. I would also change the way the app stores the query parameters into a less long one. 
+
 ### App design and UX
 The app also needs to look good. So I made a nice design and gave some attention to the UX
 
@@ -47,9 +70,8 @@ The app also needs to look good. So I made a nice design and gave some attention
 I didn't want the overview page to be a boring list of countries that link to the detail page. So I have made cards. This allowed me to add some more information about the country. To do this I added labels with all kinds of information. The labels are reused in multiple places, which adds consistency to the app
 
 #### Filters
-The filters were hard UX wise. I wanted to combine the region and subregions. Into collapse able filters. Due to me being new to Angular and therefore angular forms and observables I couldn't get this to work.
+The filters were hard UX wise. I wanted to combine the region and subregions into filters that can collapse. Due to me being new to Angular and therefore angular forms and observables I couldn't get this to work within a reasonable time. 
 
-<!-- Insert sketch here -->
 ## What I have learned
 * I learned to use the basics of Angular, creating components and dynamically render them based on data
 * I learned to use a service class as a proxy for the api and components. 
@@ -57,6 +79,8 @@ The filters were hard UX wise. I wanted to combine the region and subregions. In
 * I learned the basics of Observables (RxJS)
 * I learned a lot of typescript
 
-## What I haven't done
+## What I haven't done / Ideas for new features
 * Search is always an exact match, which I would love to have changed based on a RegEX test
+* Search and filters are always 'AND' matches, which would be cool to have toggle with a button to 'OR' matches as well 
 * Better UX for the filters (see filters) 
+* The currency filter isn't working, due to an error early on in design
