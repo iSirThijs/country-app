@@ -13,6 +13,9 @@
 					<app-country-list-card [country]='country'></app-country-list-card>
 				</a>
 			</li>
+			<li *ngIf='countries.length === 0'>
+				<app-country-list-card [country]='undefined'></app-country-list-card>
+			</li>
 		</ul>
 	</section>
 </main>

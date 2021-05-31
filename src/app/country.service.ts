@@ -35,7 +35,7 @@ export class CountryService {
     return new Observable((observer) => {
       if(this.allCountries.length === 0) {
         getCountry(countryCode)
-          .then(country => observer.next(country))
+          .then((country: Country) => observer.next(country))
           .then(() => observer.complete())
       } else {
         let country = this.allCountries.find((country) => country.code === countryCode)
@@ -55,7 +55,7 @@ export class CountryService {
     return getAllSubRegions()
   }
 
-  getCurrencies(): Promise<[key: string, value: number][]> {
+  getCurrencies(): Promise<string[]> {
     return getAllCountries()
       .then((countries: Country[]) => {
         return countries.reduce((sum: {[key: string]: number}, country: Country) => {
@@ -64,6 +64,7 @@ export class CountryService {
         },{})
       })
       .then((currencies) => Object.entries(currencies).sort(([keyA, valueA],[keyB, valueB]) => valueB - valueA))
+      .then((currencies) => currencies.map(([key]) => key))
   }
 }
 
