@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Country } from '../country'
 import { CountryService } from '../country.service'
 
@@ -9,18 +11,17 @@ import { CountryService } from '../country.service'
 })
 export class CountryListComponent implements OnInit {
   countries: Country[] = []
+  queryParamMap: Observable<ParamMap>
   
-  constructor(private countryService: CountryService) { 
-   
+  constructor(private countryService: CountryService, private route: ActivatedRoute) {
+    this.queryParamMap = this.route.queryParamMap
   }
 
   ngOnInit(): void {
-    this.getCountries()
-    console.log(this.countries)
+    this.getCountries(this.queryParamMap)
   }
 
-  getCountries(): void {
-    this.countryService.getCountries().subscribe((countries) =>  this.countries = countries)
+  getCountries(queryParamMap: Observable<ParamMap>): void {
+    this.countryService.getCountries(queryParamMap).subscribe((countries) =>  this.countries = countries)
   }
-
 }

@@ -8,4 +8,5 @@ export interface Country {
     currencies: string[];
     languages: string[];
     nativeLanguage: string;
+    [key: string]: string | string[];
 }

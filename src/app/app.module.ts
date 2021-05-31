@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { CountryListComponent } from './country-list/country-list.component';
 import { CountryListCardComponent } from './country-list-card/country-list-card.component';
 import { LabelsComponent } from './labels/labels.component';
+import { FiltersComponent } from './filters/filters.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CountryListComponent,
     CountryListCardComponent,
-    LabelsComponent
+    LabelsComponent,
+    FiltersComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
