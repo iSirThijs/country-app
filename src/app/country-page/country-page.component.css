@@ -1,0 +1,52 @@
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: 10px;
+}
+
+header p {
+	margin: 0;
+	margin-top: 1em;
+	padding: 0
+}
+
+header h1 {
+	margin-bottom: 0;
+}
+
+
+header p.nametype {
+	font-style: italic;
+	font-size: 80%;
+	margin: 0;
+	padding: 0;
+}
+
+section h1 {
+	font-size: 16px;
+}
+
+
+a.backlink {
+	font-size: 80%;
+	text-decoration: none;
+	background-color: grey;
+	border-radius: 10px;
+	padding: 0.5em;
+	color: black;
+	border: solid grey 2px
+}
+
+a.backlink:active,
+a.backlink:hover {
+	border-color: red;
+
+}
+
+
+a.backlink::before {
+	content: '<';
+	margin-right: 3px;
+}

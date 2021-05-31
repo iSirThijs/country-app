@@ -1,0 +1,38 @@
+<a class="backlink" href="..">Back</a>
+<div>
+	<header *ngIf='country'>
+		<h1>{{country.commonName}}</h1>
+		<p class="nametype">common name</p>
+		<p>{{country.nativeName}}</p>
+		<p class="nametype">native name</p>
+	</header>
+	<main *ngIf='country'>
+		<section>
+			<h1>Region</h1>
+			<ul>
+				<li><app-labels [labelName]='country.region' [labelType]='"region"'></app-labels></li>
+				<li><app-labels [labelName]='country.subregion' [labelType]='"subregion"'></app-labels></li>
+			</ul>
+		</section>
+		<section>
+			<h1>Currency</h1>
+			<ul>
+				<li *ngFor='let currency of country.currencies'>
+					<app-labels [labelName]='currency' [labelType]='"currency"'></app-labels>
+				</li>
+			</ul>
+		</section>
+		<section>
+			<h1>Languages</h1>
+			<ul>
+				<li *ngFor='let language of country.languages'>
+					<app-labels [labelName]='language' [labelType]='"language"'></app-labels>
+				</li>
+			</ul>
+		</section>
+		<section>
+			<h1>Flag</h1>
+			<img [src]='country.flag' alt="The flag of {{country.commonName}}">
+		</section>
+	</main>
+</div>
